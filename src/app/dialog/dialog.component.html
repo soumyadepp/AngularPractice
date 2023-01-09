@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Add Customer Form</h1>
+<form action="" [formGroup] = "productForm">
+  <div mat-dialog-content>
+    <div class="name-div">
+      <mat-form-field class="mat-form-field-sm" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" formControlName="firstName" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field-sm" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" formControlName="lastName" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="mat-form-field-sm" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email"/>
+      <mat-icon matSuffix>mailbox</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="mat-form-field-sm" appearance="outline">
+      <mat-label>Designation</mat-label>
+      <mat-select placeholder="Designation" formControlName="designation">
+        <mat-option *ngFor="let designation of designationList" [value]="designation.value">
+          {{designation.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-radio-group formControlName="gender">
+      <h3>Gender</h3>
+      <mat-radio-button *ngFor="let gender of genderList" [value]="gender">
+        {{gender.title}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>
+<div mat-dialog-actions [align] = "'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" (click) = "addProduct()">Save</button>
+</div>
